@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1378577811">
+  <project timestamp="1378577811">
+    <package name="Api\RemoteBundle">
+      <file name="/home/petre/projects/WeekendShopProject/src/Api/RemoteBundle/ApiRemoteBundle.php">
+        <class name="ApiRemoteBundle" namespace="Api\RemoteBundle">
+          <metrics methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <line num="10" type="stmt" count="1"/>
+        <metrics loc="9" ncloc="9" classes="1" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="Api\RemoteBundle\Controller">
+      <file name="/home/petre/projects/WeekendShopProject/src/Api/RemoteBundle/Controller/AccountController.php">
+        <class name="AccountController" namespace="Api\RemoteBundle\Controller">
+          <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="0" elements="13" coveredelements="0"/>
+        </class>
+        <line num="12" type="method" name="indexAction" crap="2" count="0"/>
+        <line num="13" type="stmt" count="0"/>
+        <line num="14" type="stmt" count="0"/>
+        <line num="16" type="stmt" count="0"/>
+        <line num="18" type="stmt" count="0"/>
+        <line num="20" type="stmt" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <line num="23" type="stmt" count="0"/>
+        <line num="24" type="stmt" count="0"/>
+        <line num="25" type="stmt" count="0"/>
+        <line num="27" type="stmt" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <metrics loc="29" ncloc="29" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="12" coveredstatements="0" elements="13" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="Api\RemoteBundle\DependencyInjection">
+      <file name="/home/petre/projects/WeekendShopProject/src/Api/RemoteBundle/DependencyInjection/ApiRemoteExtension.php">
+        <class name="ApiRemoteExtension" namespace="Api\RemoteBundle\DependencyInjection">
+          <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="8" coveredelements="0"/>
+        </class>
+        <line num="20" type="method" name="load" crap="2" count="0"/>
+        <line num="21" type="stmt" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <line num="23" type="stmt" count="0"/>
+        <line num="25" type="stmt" count="0"/>
+        <line num="26" type="stmt" count="0"/>
+        <line num="27" type="stmt" count="0"/>
+        <metrics loc="28" ncloc="20" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="8" coveredelements="0"/>
+      </file>
+      <file name="/home/petre/projects/WeekendShopProject/src/Api/RemoteBundle/DependencyInjection/Configuration.php">
+        <class name="Configuration" namespace="Api\RemoteBundle\DependencyInjection">
+          <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="0" elements="7" coveredelements="0"/>
+        </class>
+        <line num="18" type="method" name="getConfigTreeBuilder" crap="2" count="0"/>
+        <line num="19" type="stmt" count="0"/>
+        <line num="20" type="stmt" count="0"/>
+        <line num="21" type="stmt" count="0"/>
+        <line num="27" type="stmt" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <metrics loc="29" ncloc="15" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="0" elements="7" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="Api\RemoteBundle\Entity">
+      <file name="/home/petre/projects/WeekendShopProject/src/Api/RemoteBundle/Entity/ApplicationKey.php">
+        <class name="ApplicationKey" namespace="Api\RemoteBundle\Entity">
+          <metrics methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="12" coveredelements="12"/>
+        </class>
+        <line num="42" type="method" name="getId" crap="1" count="3"/>
+        <line num="44" type="stmt" count="3"/>
+        <line num="53" type="method" name="setName" crap="1" count="3"/>
+        <line num="55" type="stmt" count="3"/>
+        <line num="57" type="stmt" count="3"/>
+        <line num="65" type="method" name="getName" crap="1" count="1"/>
+        <line num="67" type="stmt" count="1"/>
+        <line num="76" type="method" name="setValue" crap="1" count="3"/>
+        <line num="78" type="stmt" count="3"/>
+        <line num="80" type="stmt" count="3"/>
+        <line num="88" type="method" name="getValue" crap="1" count="1"/>
+        <line num="90" type="stmt" count="1"/>
+        <metrics loc="91" ncloc="42" classes="1" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="12" coveredelements="12"/>
+      </file>
+      <file name="/home/petre/projects/WeekendShopProject/src/Api/RemoteBundle/Entity/ApplicationKeyRepository.php">
+        <class name="ApplicationKeyRepository" namespace="Api\RemoteBundle\Entity">
+          <metrics methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="19" coveredstatements="17" elements="22" coveredelements="20"/>
+        </class>
+        <line num="19" type="method" name="create" crap="1" count="1"/>
+        <line num="20" type="stmt" count="1"/>
+        <line num="22" type="stmt" count="1"/>
+        <line num="23" type="stmt" count="1"/>
+        <line num="25" type="stmt" count="1"/>
+        <line num="26" type="stmt" count="1"/>
+        <line num="28" type="stmt" count="1"/>
+        <line num="34" type="method" name="update" crap="2.01" count="1"/>
+        <line num="35" type="stmt" count="1"/>
+        <line num="37" type="stmt" count="1"/>
+        <line num="38" type="stmt" count="0"/>
+        <line num="41" type="stmt" count="1"/>
+        <line num="42" type="stmt" count="1"/>
+        <line num="44" type="stmt" count="1"/>
+        <line num="46" type="stmt" count="1"/>
+        <line num="52" type="method" name="delete" crap="2.02" count="1"/>
+        <line num="53" type="stmt" count="1"/>
+        <line num="55" type="stmt" count="1"/>
+        <line num="56" type="stmt" count="0"/>
+        <line num="59" type="stmt" count="1"/>
+        <line num="60" type="stmt" count="1"/>
+        <line num="62" type="stmt" count="1"/>
+        <line num="65" type="stmt" count="1"/>
+        <metrics loc="64" ncloc="49" classes="1" methods="3" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="19" coveredstatements="17" elements="22" coveredelements="18"/>
+      </file>
+    </package>
+    <file name="/home/petre/projects/WeekendShopProject/src/Api/RemoteBundle/Entity/CrudInterface.php">
+      <metrics loc="36" ncloc="13" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <package name="Shop\ContentBundle\Controller">
+      <file name="/home/petre/projects/WeekendShopProject/src/Shop/ContentBundle/Controller/DefaultController.php">
+        <class name="DefaultController" namespace="Shop\ContentBundle\Controller">
+          <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="0" elements="9" coveredelements="0"/>
+        </class>
+        <line num="12" type="method" name="indexAction" crap="2" count="0"/>
+        <line num="13" type="stmt" count="0"/>
+        <line num="14" type="stmt" count="0"/>
+        <line num="15" type="stmt" count="0"/>
+        <line num="16" type="stmt" count="0"/>
+        <line num="18" type="stmt" count="0"/>
+        <line num="20" type="stmt" count="0"/>
+        <line num="21" type="stmt" count="0"/>
+        <metrics loc="22" ncloc="22" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="0" elements="9" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="Shop\ContentBundle\DependencyInjection">
+      <file name="/home/petre/projects/WeekendShopProject/src/Shop/ContentBundle/DependencyInjection/Configuration.php">
+        <class name="Configuration" namespace="Shop\ContentBundle\DependencyInjection">
+          <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="0" elements="7" coveredelements="0"/>
+        </class>
+        <line num="18" type="method" name="getConfigTreeBuilder" crap="2" count="0"/>
+        <line num="19" type="stmt" count="0"/>
+        <line num="20" type="stmt" count="0"/>
+        <line num="21" type="stmt" count="0"/>
+        <line num="27" type="stmt" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <metrics loc="29" ncloc="15" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="0" elements="7" coveredelements="0"/>
+      </file>
+      <file name="/home/petre/projects/WeekendShopProject/src/Shop/ContentBundle/DependencyInjection/ShopContentExtension.php">
+        <class name="ShopContentExtension" namespace="Shop\ContentBundle\DependencyInjection">
+          <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="8" coveredelements="0"/>
+        </class>
+        <line num="20" type="method" name="load" crap="2" count="0"/>
+        <line num="21" type="stmt" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <line num="23" type="stmt" count="0"/>
+        <line num="25" type="stmt" count="0"/>
+        <line num="26" type="stmt" count="0"/>
+        <line num="27" type="stmt" count="0"/>
+        <metrics loc="28" ncloc="20" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="8" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="Shop\ContentBundle\Helper">
+      <file name="/home/petre/projects/WeekendShopProject/src/Shop/ContentBundle/Helper/ApiCallHelper.php">
+        <class name="ApiCallHelper" namespace="Shop\ContentBundle\Helper">
+          <metrics methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="21" coveredstatements="0" elements="26" coveredelements="0"/>
+        </class>
+        <line num="24" type="method" name="__construct" crap="2" count="0"/>
+        <line num="25" type="stmt" count="0"/>
+        <line num="26" type="stmt" count="0"/>
+        <line num="27" type="stmt" count="0"/>
+        <line num="35" type="method" name="makeCall" crap="2" count="0"/>
+        <line num="36" type="stmt" count="0"/>
+        <line num="37" type="stmt" count="0"/>
+        <line num="39" type="stmt" count="0"/>
+        <line num="40" type="stmt" count="0"/>
+        <line num="47" type="method" name="createAbsoluteUrl" crap="2" count="0"/>
+        <line num="48" type="stmt" count="0"/>
+        <line num="49" type="stmt" count="0"/>
+        <line num="57" type="method" name="callApiLayer" crap="2" count="0"/>
+        <line num="58" type="stmt" count="0"/>
+        <line num="59" type="stmt" count="0"/>
+        <line num="61" type="stmt" count="0"/>
+        <line num="62" type="stmt" count="0"/>
+        <line num="69" type="method" name="jsonEncodeParameters" crap="2" count="0"/>
+        <line num="70" type="stmt" count="0"/>
+        <line num="72" type="stmt" count="0"/>
+        <line num="73" type="stmt" count="0"/>
+        <metrics loc="73" ncloc="39" classes="1" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="21" coveredstatements="0" elements="26" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="Shop\ContentBundle">
+      <file name="/home/petre/projects/WeekendShopProject/src/Shop/ContentBundle/ShopContentBundle.php">
+        <class name="ShopContentBundle" namespace="Shop\ContentBundle">
+          <metrics methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <line num="10" type="stmt" count="1"/>
+        <metrics loc="9" ncloc="9" classes="1" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+    </package>
+    <metrics files="12" loc="447" ncloc="282" classes="11" methods="19" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="93" coveredstatements="24" elements="112" coveredelements="30"/>
+  </project>
+</coverage>

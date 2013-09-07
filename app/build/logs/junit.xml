@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="Project Test Suite" tests="3" assertions="6" failures="0" errors="0" time="0.396619">
+    <testsuite name="ApplicationKeyRepositoryTest" file="/home/petre/projects/WeekendShopProject/src/Api/RemoteBundle/Tests/Functional/Entity/ApplicationKeyRepositoryTest.php" tests="3" assertions="6" failures="0" errors="0" time="0.396619">
+      <testcase name="testCreate_Valid" class="ApplicationKeyRepositoryTest" file="/home/petre/projects/WeekendShopProject/src/Api/RemoteBundle/Tests/Functional/Entity/ApplicationKeyRepositoryTest.php" line="28" assertions="3" time="0.182125"/>
+      <testcase name="testUpdate_Valid" class="ApplicationKeyRepositoryTest" file="/home/petre/projects/WeekendShopProject/src/Api/RemoteBundle/Tests/Functional/Entity/ApplicationKeyRepositoryTest.php" line="48" assertions="2" time="0.104986"/>
+      <testcase name="testDelete_Valid" class="ApplicationKeyRepositoryTest" file="/home/petre/projects/WeekendShopProject/src/Api/RemoteBundle/Tests/Functional/Entity/ApplicationKeyRepositoryTest.php" line="72" assertions="1" time="0.109508"/>
+    </testsuite>
+  </testsuite>
+</testsuites>
