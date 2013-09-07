@@ -13,6 +13,8 @@ _configurator:
 _main:
     resource: routing.yml
 
-# AcmeDemoBundle routes (to be removed)
-_acme_demo:
-    resource: "@AcmeDemoBundle/Resources/config/routing.yml"
+_api_resource:
+    resource: "@ApiRemoteBundle/Resources/config/routing.yml"
+
+_shop_content_resource:
+    resource: "@ShopContentBundle/Resources/config/routing.yml"

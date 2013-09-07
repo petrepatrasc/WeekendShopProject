@@ -5,3 +5,8 @@ services:
 #    shop_content.example:
 #        class: %shop_content.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]
+  api.call:
+    class: Shop\ContentBundle\Helper\ApiCallHelper
+    arguments:
+      router: "@router"
+      buzz: "@buzz"

@@ -1,3 +1,4 @@
-api_remote_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: ApiRemoteBundle:Default:index }
+api_account_login:
+    pattern:  /api/account/login
+    defaults: { _controller: ApiRemoteBundle:Account:index }
+    methods: [POST]
