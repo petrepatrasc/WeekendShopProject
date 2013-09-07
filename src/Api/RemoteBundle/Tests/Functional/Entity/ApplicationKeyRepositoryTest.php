@@ -10,16 +10,41 @@
 use Api\RemoteBundle\Tests\FunctionalTestCase;
 use Api\RemoteBundle\Entity\ApplicationKeyRepository;
 use Api\RemoteBundle\Entity\ApplicationKey;
+use Api\RemoteBundle\Tests\CrudTestInterface;
 
-class ApplicationKeyRepositoryTest extends FunctionalTestCase {
+class ApplicationKeyRepositoryTest extends FunctionalTestCase implements CrudTestInterface {
 
+    /**
+     * @var ApplicationKeyRepository
+     */
     protected $repo;
 
     public function setUp() {
         parent::setUp();
         $this->repo = $this->em->getRepository('ApiRemoteBundle:ApplicationKey');
+    }
 
+    /**
+     * Create a default fixture entity for the test class.
+     * @param array $params Parameters which overwrite class defaults.
+     * @return ApplicationKey The resulting entity.
+     */
+    public function createDefaultFixture($params) {
+        $data = array(
+            'createdAt' => date('Y-m-d H:i:s'),
+            'updatedAt' => date('Y-m-d H:i:s'),
+            'name'  => 'testAppName',
+            'value' => sha1('testAppKey'),
+        );
 
+        $merged = array_merge($data, $params);
+
+        $entity = ApplicationKey::makeFromArray($merged);
+
+        $this->em->persist($entity);
+        $this->em->flush();
+
+        return $entity;
     }
 
     /**
@@ -33,7 +58,7 @@ class ApplicationKeyRepositoryTest extends FunctionalTestCase {
             'value' => sha1('testNewKey')
         );
 
-        $response = $this->repo->create($params);
+        $response = $this->repo->create($this->createDefaultFixture($params));
 
         $this->assertInternalType('int', $response);
         $this->assertGreaterThan(0, $response);
@@ -49,7 +74,12 @@ class ApplicationKeyRepositoryTest extends FunctionalTestCase {
         $updateName = 'test';
         $updateValue = sha1('test123');
 
-        $newEntryID = $this->createNewFixture();
+        $initialData = array(
+            'name' => $updateName,
+            'value' => $updateValue
+        );
+
+        $newEntry = $this->createDefaultFixture($initialData);
 
         $params = array(
             'name' => $updateName,
@@ -57,10 +87,10 @@ class ApplicationKeyRepositoryTest extends FunctionalTestCase {
         );
 
         // Update the entry.
-        $this->repo->update($newEntryID, $params);
+        $this->repo->update($newEntry, $params);
 
         // Retrieve the entry and check if it has been updated.
-        $appKey = $this->repo->find($newEntryID);
+        $appKey = $this->repo->find($newEntry->getId());
 
         $this->assertSame($appKey->getName(), $updateName);
         $this->assertSame($appKey->getValue(), $updateValue);
@@ -73,31 +103,18 @@ class ApplicationKeyRepositoryTest extends FunctionalTestCase {
         $testName = 'deleteTest';
         $testValue = sha1('deleteTest');
 
-        $appKeyID = $this->createNewFixture($testName, $testValue);
+        $constructionData = array(
+            'name'  => $testName,
+            'value' => $testValue
+        );
+
+        $appKey = $this->createDefaultFixture($constructionData);
         $firstCount = count($this->repo->findAll());
 
-        $this->repo->delete($appKeyID);
+        $this->repo->delete($appKey);
 
         $secondCount = count($this->repo->findAll());
 
         $this->assertSame($firstCount - 1, $secondCount);
-    }
-
-    /**
-     * Create a new fixture and return its ID.
-     * @param string $name The name of the fixture.
-     * @param string $value The key of the fixture.
-     * @return int The ID of the fixture that has been created.
-     */
-    protected function createNewFixture($name = 'testName', $value = '0025dd9f850ce7889cf3e79e64328d0c4957751a') {
-        // Create test fixture.
-        $appKey = new ApplicationKey();
-        $appKey->setName($name);
-        $appKey->setValue($value);
-
-        $this->em->persist($appKey);
-        $this->em->flush();
-
-        return $appKey->getId();
     }
 }
