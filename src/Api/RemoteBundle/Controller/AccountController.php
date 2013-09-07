@@ -2,28 +2,47 @@
 
 namespace Api\RemoteBundle\Controller;
 
+use Api\RemoteBundle\Exception\Account\NotFoundException;
+use Api\RemoteBundle\Service\AccountService;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\Serializer\Encoder\JsonEncode;
+use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Serializer\Encoder\JsonEncoder as JsonEncoder;
+use Symfony\Component\HttpFoundation\Response;
 
-class AccountController extends Controller
+class AccountController extends Controller implements AppKeyAuthenticatedController
 {
-    public function indexAction()
-    {
-        $request = $this->getRequest();
+    public function loginAction() {
+        $params = $this->get('json')->decode($this->getRequest());
+        $username = $params['username'];
+        $password = $params['password'];
 
-        $data = $request->request->get('json_data');
+        try {
+            $valid = $this->get('account')->loginWithUsernameAndPassword($username, $password);
+        } catch (NotFoundException $e) {
+            return new Response($e);
+        }
+    }
 
-        $jsonDecoder = new JsonEncoder();
+    public function registerAction() {
+        $params = $this->get('json')->decode($this->getRequest());
 
-        $jsonData = $jsonDecoder->decode($data, $format = 'json');
+        // validate data from API call.
+        $params['createdAt'] = date('Y-m-d H:i:s');
+        $params['updatedAt'] = date('Y-m-d H:i:s');
+        $params['apiKey'] = sha1($this->generateRandomString(20));
 
-        $response = array(
-            'status' => 100,
-            'message' => 'Details are correct!'
-        );
+        $this->get('account')->register($params);
 
-        return new JsonResponse($response);
+        return $this->get('json')->generateSuccessfulResponse();
+    }
+
+    protected function generateRandomString($length = 10) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, strlen($characters) - 1)];
+        }
+        return $randomString;
     }
 }

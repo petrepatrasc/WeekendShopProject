@@ -1,0 +1,18 @@
+{% block register_form %}
+    <form action="{{ path('shop_account_register') }}" method="POST" id="register_form">
+
+        <label for="username">Username: </label>
+        <input type="text" name="username" id="username" />
+
+        <label for="password">Password: </label>
+        <input type="password" name="password" id="password" />
+
+        <label for="fullName">Full name: </label>
+        <input type="text" name="fullName" id="fullName" />
+
+        <label for="email">Email: </label>
+        <input type="text" name="email" id="email" />
+
+        <input type="submit" value="Register" />
+    </form>
+{% endblock %}

@@ -7,32 +7,36 @@
  * To change this template use File | Settings | File Templates.
  */
 
-namespace Shop\ContentBundle\Helper;
+namespace Shop\ContentBundle\Service;
 
 use Symfony\Component\Serializer\Encoder\JsonEncoder as JsonEncoder;
 
-class ApiCallHelper {
+class ApiCallService {
 
     protected $router = null;
     protected $buzz = null;
+    protected $appKey = null;
 
     /**
      * Constructor for ApiCall class.
      * @param mixed $router The router service that should be passed.
      * @param mixed $buzz The Buzz library for issuing POST requests to the API layer.
+     * @param string $appKey The Application key from the parameters file.
      */
-    public function __construct($router, $buzz) {
+    public function __construct($router, $buzz, $appKey) {
         $this->router   = $router;
         $this->buzz     = $buzz;
+        $this->appKey   = $appKey;
     }
 
     /**
      * Make a call to the API layer, and provides an easy wrapper-method over all of the components.
      * @param string $apiRoute The API route that should be called.
      * @param array $parameters The parameters that you would like to pass.
+     * @param bool $apiKeyRequired Whether the API key is required for this request or not.
      * @return string The JSON response from the API layer.
      */
-    public function makeCall($apiRoute, $parameters) {
+    public function makeCall($apiRoute, $parameters, $apiKeyRequired = false) {
         $url = $this->createAbsoluteUrl($apiRoute);
         $response = $this->callApiLayer($url, $parameters);
 
@@ -45,7 +49,7 @@ class ApiCallHelper {
      * @return string mixed The absolute route.
      */
     protected function createAbsoluteUrl($apiRoute) {
-        return $this->router->generate('api_account_login', array(), true);
+        return $this->router->generate($apiRoute, array(), true);
     }
 
     /**
@@ -55,6 +59,7 @@ class ApiCallHelper {
      * @return string The JSON response from the API layer.
      */
     protected function callApiLayer($url, $parameters) {
+        $parameters = array_merge($parameters, array('app_key' => $this->appKey));
         $fields = array('json_data' => $this->jsonEncodeParameters($parameters));
         $response = $this->buzz->submit($url, $fields);
 

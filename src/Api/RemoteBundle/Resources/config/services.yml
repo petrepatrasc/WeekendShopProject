@@ -2,6 +2,19 @@ parameters:
 #    api_remote.example.class: Api\RemoteBundle\Example
 
 services:
-#    api_remote.example:
-#        class: %api_remote.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+  api.tokens.action_listener:
+    class: Api\RemoteBundle\EventListener\TokenListener
+    arguments: [ @token.verification ]
+    tags:
+      - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
+
+  account:
+    class: Api\RemoteBundle\Service\AccountService
+    arguments: [ @doctrine.orm.entity_manager ]
+
+  json:
+    class: Api\RemoteBundle\Service\JsonProcessorService
+
+  token.verification:
+    class: Api\RemoteBundle\Service\TokenVerificationService
+    arguments: [ @doctrine.orm.entity_manager ]

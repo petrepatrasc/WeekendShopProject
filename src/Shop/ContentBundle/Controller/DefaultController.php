@@ -11,8 +11,9 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
+
         $requestData = array(
-            'api_key' => 'da39a3ee5e6b4b0d3255bfef95601890afd80709'
+            'app_key' => 'bcae1066f80901c8547e013bc7315377f5e47b76'
         );
 
         $apiResponse = $this->get('api.call')->makeCall('api.account.login', $requestData);

@@ -12,5 +12,18 @@ use Doctrine\ORM\EntityRepository;
  */
 class AccountRepository extends CrudRepository
 {
+    /**
+     * Find one Account entity by its username and password.
+     * @param string $username The username of the Account.
+     * @param string $password The encoded password of the Account.
+     * @return Account|null The account that was found.
+     */
+    public function findByUsernameAndPassword($username, $password) {
+        $criteria = array(
+            'username' => $username,
+            'password' => $password
+        );
 
+        return $this->findOneBy($criteria);
+    }
 }

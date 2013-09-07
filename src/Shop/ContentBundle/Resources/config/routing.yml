@@ -1,3 +1,23 @@
+# Shop Routes
 shop_content_homepage:
     pattern:  /
     defaults: { _controller: ShopContentBundle:Default:index }
+
+shop_account_login:
+    pattern: /account/login
+    defaults: { _controller: ShopContentBundle:Account:login }
+
+shop_account_register:
+    pattern: /account/register
+    defaults: { _controller: ShopContentBundle:Account:register }
+
+# Api Routes
+api_account_login:
+    pattern:  /api/account/login
+    defaults: { _controller: ApiRemoteBundle:Account:login }
+    methods: [POST]
+
+api_account_register:
+    pattern: /api/account/register
+    defaults: { _controller: ApiRemoteBundle:Account:register }
+    methods: [POST]

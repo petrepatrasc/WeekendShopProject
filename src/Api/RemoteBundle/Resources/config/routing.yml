@@ -1,4 +1,5 @@
-api_account_login:
-    pattern:  /api/account/login
-    defaults: { _controller: ApiRemoteBundle:Account:index }
+api_bundle_account_login:
+    pattern:  account/login
+    defaults: { _controller: ApiRemoteBundle:Account:login }
     methods: [POST]
+    prefix: /api
