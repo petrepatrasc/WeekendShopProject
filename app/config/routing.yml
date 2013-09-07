@@ -1,0 +1,8 @@
+api_remote:
+    resource: "@ApiRemoteBundle/Resources/config/routing.yml"
+    prefix:   /
+
+shop_content:
+    resource: "@ShopContentBundle/Resources/config/routing.yml"
+    prefix:   /
+

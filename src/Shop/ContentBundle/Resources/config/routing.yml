@@ -1,0 +1,3 @@
+shop_content_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: ShopContentBundle:Default:index }

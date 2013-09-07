@@ -1,0 +1,3 @@
+api_remote_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: ApiRemoteBundle:Default:index }

@@ -1,0 +1,7 @@
+parameters:
+#    api_remote.example.class: Api\RemoteBundle\Example
+
+services:
+#    api_remote.example:
+#        class: %api_remote.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
