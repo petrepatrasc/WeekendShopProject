@@ -1,0 +1,45 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+
+        <div class="span12">
+            <ul class="breadcrumb">
+                <li><a href="{{ path('shop_content_homepage') }}">Home</a> <span class="divider">/</span></li>
+                <li><a href="{{ path('shop_account_index') }}">Account</a> <span class="divider">/</span></li>
+                <li class="active"><a href="#">Login</a></li>
+            </ul>
+
+            <div class="row">
+                <div class="span9">
+                    <h1>Account login</h1>
+                </div>
+            </div>
+
+            <hr/>
+
+            <div class="row">
+
+                <div class="span5 well">
+                    <h2>New Customers</h2>
+
+                    <p>By creating an account with our store, you will be able to move through the checkout process
+                        faster, store multiple shipping addresses, view and track your orders in your account and
+                        more.</p><br/>
+                    <a href="{{ path('shop_account_register') }}" class="btn btn-primary pull-right">Create an account</a>
+                </div>
+
+                <div class="span5 well pull-right">
+                    <h2>Registered Customers</h2>
+
+                    <p>If you have an account with us, please log in.</p>
+
+                    {% include 'ShopContentBundle:Account:login_form.html.twig' %}
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

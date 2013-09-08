@@ -18,7 +18,9 @@ class AccountController extends Controller implements AppKeyAuthenticatedControl
         $password = $params['password'];
 
         try {
-            $valid = $this->get('account')->loginWithUsernameAndPassword($username, $password);
+            $user = $this->get('account')->loginWithUsernameAndPassword($username, $password);
+
+            return $this->get('json')->generateSuccessfulResponse($user->toArray());
         } catch (NotFoundException $e) {
             return new Response($e);
         }

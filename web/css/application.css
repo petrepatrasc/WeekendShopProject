@@ -1,0 +1,31 @@
+.flash {
+    border: 1px solid #e3e3e3;
+    border-radius: 6px;
+    color: #fff;
+    margin-bottom: 1em;
+    padding: 1em;
+    text-align: center;
+    width: 90%;
+}
+
+.flash-success{
+    background-color: #339748;
+}
+
+.full-width {
+    width: 914px;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.order-item-profile {
+    border: 1px solid #e3e3e3;
+    border-radius: 6px;
+    padding: 1em;
+}
+
+.list-segment {
+    margin-bottom: 6em;
+}

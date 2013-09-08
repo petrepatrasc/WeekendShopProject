@@ -1,0 +1,26 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+<div class="row">
+
+    <div class="span12">
+        <ul class="breadcrumb">
+            <li><a href="{{ path('shop_content_homepage') }}">Home</a> <span class="divider">/</span></li>
+            <li><a href="{{ path('shop_account_index') }}">Account</a> <span class="divider">/</span></li>
+            <li class="active"><a href="#">Register</a></li>
+        </ul>
+    </div>
+
+    <div class="span12">
+        <h1>Create an account</h1>
+
+        <br/>
+
+        <h3>Registration Successful!</h3>
+
+        <p>Hey {{ fullName }}, thanks for joining us. Just so you know, we've gone ahead and emailed you that you've made an account on our website, and included a few helpful links to get you started.</p>
+
+        <p>When you're all set up, please login via the <a href="{{ path('shop_account_index') }}">Account</a> section.</p>
+    </div>
+</div>
+{% endblock %}

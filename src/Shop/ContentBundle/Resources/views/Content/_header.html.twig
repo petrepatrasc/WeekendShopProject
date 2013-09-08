@@ -1,0 +1,32 @@
+{% block header %}
+    <div class="row"><!-- start header -->
+        <div class="span4 logo">
+            <a href="{{ path('shop_content_homepage') }}">
+                <h1>Bootstrap Cart</h1>
+            </a>
+        </div>
+        <div class="span8">
+
+            <div class="row">
+                <div class="span3">&nbsp;</div>
+                <div class="span2">
+                    {% if app.session.get('loggedIn') == true %}
+                        <a href="{{ path('shop_cart_index') }}"><h4>Shopping Cart</h4></a>
+                        <a href="{{ path('shop_cart_index') }}">Your cart is empty.</a>
+                    {% else %}
+                        &nbsp;
+                    {% endif %}
+                </div>
+                <div class="span3 customer_service">
+                    <h4>FREE delivery on ALL orders</h4>
+                    <h4>
+                        <small>Customer service: 0800 8475 548</small>
+                    </h4>
+                </div>
+            </div>
+            <br/>
+
+            {% include 'ShopContentBundle:Content:_navigation_top.html.twig' %}
+        </div>
+    </div><!-- end header -->
+{% endblock %}

@@ -53,6 +53,8 @@ class AccountService extends DbInteractionService{
         if ($account === null) {
             throw new NotFoundException();
         }
+
+        return $account;
     }
 
 }

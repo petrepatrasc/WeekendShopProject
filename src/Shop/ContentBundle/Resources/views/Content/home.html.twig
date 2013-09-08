@@ -1,8 +1,18 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
-<div class="row">
-    {% block sidebar %}
+    <div class="row">
+        <div class="span12">
+            {% for flashMessage in app.session.flashbag.get('success') %}
+                <div class="flash flash-success full-width">
+                    {{ flashMessage }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="row">
+        {% block sidebar %}
         <div class="span3">
             <!-- start sidebar -->
             <ul class="breadcrumb">

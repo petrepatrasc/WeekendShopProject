@@ -32,9 +32,10 @@ class JsonProcessorService {
         return $this->encoder->decode($data->get('json_data'), "json");
     }
 
-    public function generateSuccessfulResponse() {
+    public function generateSuccessfulResponse($scriptData = array()) {
         $params['status'] = ResponseCode::SUCCESS;
         $params['message'] = "Operation successful!";
+        $params = array_merge($params, $scriptData);
 
         return new JsonResponse($params);
     }

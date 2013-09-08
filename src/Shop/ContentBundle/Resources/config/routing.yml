@@ -7,11 +7,15 @@ shop_account_login:
     pattern: /account/login
     defaults: { _controller: ShopContentBundle:Account:login }
 
+shop_account_logout:
+    pattern: /account/logout
+    defaults: { _controller: ShopContentBundle:Account:logout }
+
 shop_account_register:
     pattern: /account/register
     defaults: { _controller: ShopContentBundle:Account:register }
 
-shop_acccount_index:
+shop_account_index:
     pattern: /account
     defaults: { _controller: ShopContentBundle:Account:index }
 
@@ -29,11 +33,11 @@ shop_cart_index:
 
 # Api Routes
 api_account_login:
-    pattern:  /api/account/login
+    pattern:  api/account/login
     defaults: { _controller: ApiRemoteBundle:Account:login }
     methods: [POST]
 
 api_account_register:
-    pattern: /api/account/register
+    pattern: api/account/register
     defaults: { _controller: ApiRemoteBundle:Account:register }
     methods: [POST]

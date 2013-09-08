@@ -1,18 +1,94 @@
-{% block register_form %}
-    <form action="{{ path('shop_account_register') }}" method="POST" id="register_form">
+{% extends '::base.html.twig' %}
 
-        <label for="username">Username: </label>
-        <input type="text" name="username" id="username" />
+{% block body %}
+    <div class="row">
 
-        <label for="password">Password: </label>
-        <input type="password" name="password" id="password" />
+        <div class="span12">
+            <ul class="breadcrumb">
+                <li><a href="{{ path('shop_content_homepage') }}">Home</a> <span class="divider">/</span></li>
+                <li><a href="{{ path('shop_account_index') }}">Account</a> <span class="divider">/</span></li>
+                <li class="active"><a href="#">Register</a></li>
+            </ul>
+        </div>
 
-        <label for="fullName">Full name: </label>
-        <input type="text" name="fullName" id="fullName" />
+        <div class="span12">
+            <h1>Create an account</h1>
 
-        <label for="email">Email: </label>
-        <input type="text" name="email" id="email" />
+            <br/>
 
-        <input type="submit" value="Register" />
-    </form>
+            <form action="{{ path('shop_account_register') }}" method="POST" id="register_form" class="form-horizontal">
+            <fieldset>
+                <div class="span6 no_margin_left">
+                    <legend>Your Personal Details</legend>
+                    <div class="control-group">
+                        <label class="control-label">Full Name</label>
+
+                        <div class="controls docs-input-sizes">
+                            <input type="text" name="fullName" placeholder="" class="span4"/>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Email Address</label>
+
+                        <div class="controls docs-input-sizes">
+                            <input type="text" name="email" placeholder="" class="span4"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="span6">
+                    <legend>Your login</legend>
+                    <div class="control-group">
+                        <label class="control-label">Username</label>
+
+                        <div class="controls docs-input-sizes">
+                            <input type="text" name="username" placeholder="" class="span4"/>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Password</label>
+
+                        <div class="controls docs-input-sizes">
+                            <input type="password" name="password" placeholder="" class="span4" id="password" />
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Confirm Password</label>
+
+                        <div class="controls docs-input-sizes">
+                            <input type="password" placeholder="" class="span4" id="password-confirm" />
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary btn-large pull-right" type="submit">Register</button>
+                <hr/>
+            </fieldset>
+            </form>
+
+        </div>
+
+        <hr/>
+
+
+    </div>
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $('form').submit(function(e){
+            var password = $('#password').val();
+            var passwordConfirm = $('#password-confirm').val();
+
+            if (password != passwordConfirm) {
+                alert('Passwords are not matching!');
+                return false;
+            }
+        });
+    });
+    </script>
+{% endblock %}
+

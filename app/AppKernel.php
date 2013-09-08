@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\BuzzBundle\SensioBuzzBundle(),
             new Shop\ContentBundle\ShopContentBundle(),
             new Api\RemoteBundle\ApiRemoteBundle(),
+            new Ornicar\GravatarBundle\OrnicarGravatarBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

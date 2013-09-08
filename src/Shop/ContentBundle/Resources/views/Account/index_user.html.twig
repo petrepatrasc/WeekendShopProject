@@ -1,0 +1,73 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="span12">
+            {% for flashMessage in app.session.flashbag.get('success') %}
+                <div class="flash flash-success full-width">
+                    {{ flashMessage }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span12">
+            <ul class="breadcrumb">
+                <li><a href="{{ path('shop_content_homepage') }}">Home</a> <span class="divider">/</span></li>
+                <li class="active"><a href="#">Account</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span12">
+            <h1>Profile page</h1>
+
+            <hr />
+        </div>
+
+        <div class="span12">
+            <div class="span3 left">
+                <img src="{{ gravatar(app.session.get('email')) }}" alt="Profile Picture" />
+                <h3>{{ app.session.get('fullName') }}</h3>
+                <div>Username: {{ app.session.get('username') }}</div>
+                <div>Status: <span style="color: #339748">In good standing</span></div>
+
+                <hr />
+
+                <div><a href="#">Manage delivery points</a></div>
+                <div><a href="#">Change password</a></div>
+                <div><a href="{{ path('shop_account_logout') }}">Logout</a></div>
+
+            </div>
+
+            <div class="span8 right align-right">
+                <div class="list-segment">
+                    <h3>Open orders</h3>
+
+                    <div class="order-item-profile span8">
+                        You do not currently have any open orders.
+                    </div>
+                </div>
+
+                <div class="list-segment">
+                    <h3>Closed orders</h3>
+
+                    <div class="order-item-profile span8">
+                        You do not currently have any closed orders.
+                    </div>
+                </div>
+
+                <div class="list-segment">
+                    <h3>Reviews</h3>
+
+                    <div class="order-item-profile span8">
+                        You do not currently have any reviews.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

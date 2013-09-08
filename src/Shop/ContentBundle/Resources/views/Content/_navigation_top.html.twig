@@ -1,0 +1,18 @@
+{%  if app.session.get('loggedIn') == true %}
+    {% set accountName = app.session.get('username') ~ "'s Account" %}
+{% else %}
+    {% set accountName = "My Account" %}
+{% endif %}
+
+
+{% block navigation_top %}
+    <div class="row">
+        <div class="links pull-right">
+        <a href="{{ path('shop_content_homepage') }}">Home</a> |
+        <a href="{{ path('shop_account_index') }}">{{ accountName }}</a> |
+        <a href="{{ path('shop_cart_index') }}">Shopping Cart</a> |
+        <a href="{{ path('shop_about_index') }}">About</a> |
+        <a href="{{ path('shop_contact_index') }}">Contact</a>
+    </div>
+</div>
+{% endblock %}
