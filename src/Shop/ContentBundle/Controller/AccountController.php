@@ -15,6 +15,10 @@ use \Exception;
 
 class AccountController extends Controller {
 
+    public function indexAction() {
+
+    }
+
     public function loginAction() {
         $request = $this->getRequest();
         $formErrors = null;
