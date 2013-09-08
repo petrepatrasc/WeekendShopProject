@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 class AccountController extends Controller {
 
     public function indexAction() {
-        $session = new Session();
+        $session = $this->get('session');
         $loggedIn = $session->get('loggedIn');
 
         if ($loggedIn) {

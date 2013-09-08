@@ -13,39 +13,49 @@
 
                         <div class="nav-collapse">
                             <ul class="nav">
-                                <li class="dropdown">
-                                    <a href="category.html" class="dropdown-toggle" data-toggle="dropdown">Desktops
-                                        <b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="listings.html">PC</a></li>
-                                        <li><a href="listings.html">Mac</a></li>
-                                        <li class="divider"></li>
-                                        <li class="nav-header">Accessories</li>
-                                        <li><a href="listings.html">Keyboard</a></li>
-                                        <li><a href="listings.html">Speakers</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="category.html">Laptops</a></li>
 
-                                <li><a href="category.html">Components</a></li>
-                                <li><a href="category.html">Tablets</a></li>
-                                <li class="dropdown">
-                                    <a href="category.html" class="dropdown-toggle" data-toggle="dropdown">Software
-                                        <b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="listings.html">Business & Office</a></li>
-                                        <li><a href="listings.html">Children's Fun & Learning</a></li>
-                                        <li><a href="listings.html"> Digital Imaging</a></li>
-                                        <li class="divider"></li>
-                                        <li class="nav-header">PC Games</li>
-                                        <li><a href="listings.html">Action & Shooter</a></li>
-                                        <li><a href="listings.html">Adventure</a></li>
-                                        <li><a href="listings.html">Fighting</a></li>
-                                    </ul>
+                            {% for category in categories %}
+                                <li>
+                                    <a href="#">{{ category.name }}</a>
                                 </li>
-                                <li><a href="listings.html">Phones &amp; PDAs</a></li>
+                            {% endfor %}
 
                             </ul>
+
+                            {#<ul class="nav">#}
+                                {#<li class="dropdown">#}
+                                    {#<a href="category.html" class="dropdown-toggle" data-toggle="dropdown">Desktops#}
+                                        {#<b class="caret"></b></a>#}
+                                    {#<ul class="dropdown-menu">#}
+                                        {#<li><a href="listings.html">PC</a></li>#}
+                                        {#<li><a href="listings.html">Mac</a></li>#}
+                                        {#<li class="divider"></li>#}
+                                        {#<li class="nav-header">Accessories</li>#}
+                                        {#<li><a href="listings.html">Keyboard</a></li>#}
+                                        {#<li><a href="listings.html">Speakers</a></li>#}
+                                    {#</ul>#}
+                                {#</li>#}
+                                {#<li><a href="category.html">Laptops</a></li>#}
+
+                                {#<li><a href="category.html">Components</a></li>#}
+                                {#<li><a href="category.html">Tablets</a></li>#}
+                                {#<li class="dropdown">#}
+                                    {#<a href="category.html" class="dropdown-toggle" data-toggle="dropdown">Software#}
+                                        {#<b class="caret"></b></a>#}
+                                    {#<ul class="dropdown-menu">#}
+                                        {#<li><a href="listings.html">Business & Office</a></li>#}
+                                        {#<li><a href="listings.html">Children's Fun & Learning</a></li>#}
+                                        {#<li><a href="listings.html"> Digital Imaging</a></li>#}
+                                        {#<li class="divider"></li>#}
+                                        {#<li class="nav-header">PC Games</li>#}
+                                        {#<li><a href="listings.html">Action & Shooter</a></li>#}
+                                        {#<li><a href="listings.html">Adventure</a></li>#}
+                                        {#<li><a href="listings.html">Fighting</a></li>#}
+                                    {#</ul>#}
+                                {#</li>#}
+                                {#<li><a href="listings.html">Phones &amp; PDAs</a></li>#}
+
+                            {#</ul>#}
 
                             <ul class="nav pull-right">
                                 <li class="divider-vertical"></li>

@@ -12,6 +12,10 @@ services:
     class: Api\RemoteBundle\Service\AccountService
     arguments: [ @doctrine.orm.entity_manager ]
 
+  category:
+    class: Api\RemoteBundle\Service\CategoryService
+    arguments: [ @doctrine.orm.entity_manager ]
+
   json:
     class: Api\RemoteBundle\Service\JsonProcessorService
 

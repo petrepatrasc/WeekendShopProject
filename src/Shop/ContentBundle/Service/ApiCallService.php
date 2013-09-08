@@ -36,7 +36,7 @@ class ApiCallService {
      * @param bool $apiKeyRequired Whether the API key is required for this request or not.
      * @return string The JSON response from the API layer.
      */
-    public function makeCall($apiRoute, $parameters, $apiKeyRequired = false) {
+    public function makeCall($apiRoute, $parameters = array(), $apiKeyRequired = false) {
         $url = $this->createAbsoluteUrl($apiRoute);
         $response = $this->callApiLayer($url, $parameters);
 

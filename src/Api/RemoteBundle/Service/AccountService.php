@@ -13,7 +13,7 @@ use Api\RemoteBundle\Exception\Account\NotFoundException;
 use Doctrine\ORM\EntityManager;
 use Api\RemoteBundle\Entity\AccountRepository;
 
-class AccountService extends DbInteractionService{
+class AccountService extends DbInteractionService {
 
     /**
      * @var AccountRepository

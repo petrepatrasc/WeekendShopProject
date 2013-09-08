@@ -34,10 +34,12 @@ shop_cart_index:
 # Api Routes
 api_account_login:
     pattern:  api/account/login
-    defaults: { _controller: ApiRemoteBundle:Account:login }
     methods: [POST]
 
 api_account_register:
     pattern: api/account/register
-    defaults: { _controller: ApiRemoteBundle:Account:register }
+    methods: [POST]
+
+api_category_retrieve:
+    pattern: api/category/retrieveAll
     methods: [POST]

@@ -2,3 +2,13 @@ api_bundle_account_login:
     pattern:  api/account/login
     defaults: { _controller: ApiRemoteBundle:Account:login }
     methods: [POST]
+
+api_bundle_account_register:
+    pattern:  api/account/register
+    defaults: { _controller: ApiRemoteBundle:Account:register }
+    methods: [POST]
+
+api_bundle_category_retrieve:
+    pattern: api/category/retrieveAll
+    defaults: { _controller: ApiRemoteBundle:Category:retrieveAll }
+    methods: [POST]

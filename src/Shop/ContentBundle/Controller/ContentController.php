@@ -9,13 +9,28 @@
 
 namespace Shop\ContentBundle\Controller;
 
+use \Exception;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class ContentController extends Controller {
 
     public function homeAction() {
-        return $this->render('ShopContentBundle:Content:home.html.twig');
+        $response = $this->get('api.call')->makeCall('api_category_retrieve');
+        $categories = array();
+
+        try {
+            $response = $this->get('json.response')->decode($response);
+
+            $categories = $response['categories'];
+
+        } catch (Exception $e) {
+            $formErrors = $e->getMessage();
+        }
+
+        return $this->render('ShopContentBundle:Content:home.html.twig', array(
+            'categories' => $categories
+        ));
     }
 
     public function aboutAction() {
