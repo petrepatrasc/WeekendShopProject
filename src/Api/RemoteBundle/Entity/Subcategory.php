@@ -3,27 +3,26 @@
  * Created by JetBrains PhpStorm.
  * User: petre
  * Date: 9/8/13
- * Time: 1:54 PM
+ * Time: 2:49 PM
  * To change this template use File | Settings | File Templates.
  */
 
 namespace Api\RemoteBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use DateTime;
+use \DateTime;
 
 /**
- * @ORM\Entity(repositoryClass="Api\RemoteBundle\Entity\CategoryRepository")
- * @ORM\Table(name="category")
+ * @ORM\Entity(repositoryClass="Api\RemoteBundle\Entity\SubcategoryRepository")
+ * @ORM\Table(name="subcategory")
  */
-class Category implements Serializable, EntityManager {
+class Subcategory implements Serializable, EntityManager{
 
     /**
      * Create a new entity from array elements or update an existing one.
      * @param array $params The parameters that define an entity.
-     * @param Category $entity The entity that we want to update.
-     * @return Category The entity that was obtained.
+     * @param Subcategory $entity The entity that we want to update.
+     * @return Subcategory The entity that was obtained.
      */
     public static function makeFromArray($params, $entity = null) {
         if ($entity === null) {
@@ -44,6 +43,10 @@ class Category implements Serializable, EntityManager {
             $entity->setName($params['name']);
         }
 
+        if (isset($params['category'])) {
+            $entity->setCategory($params['category']);
+        }
+
         return $entity;
     }
 
@@ -54,17 +57,13 @@ class Category implements Serializable, EntityManager {
     public function toArray() {
         $data = array();
 
+        $data['category'] = $this->getCategory();
         $data['id'] = $this->getId();
         $data['createdAt'] = $this->getCreatedAt();
         $data['updatedAt'] = $this->getUpdatedAt();
         $data['name'] = $this->getName();
-        $data['subcategories'] = $this->getSubcategories();
 
         return $data;
-    }
-
-    public function __construct() {
-        $this->products = new ArrayCollection();
     }
 
     /**
@@ -90,9 +89,11 @@ class Category implements Serializable, EntityManager {
     protected $updatedAt;
 
     /**
-     * @ORM\OneToMany(targetEntity="Subcategory", mappedBy="category")
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="subcategory")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
-    protected $subcategories;
+    protected $category;
+
 
     /**
      * Get id
@@ -108,7 +109,7 @@ class Category implements Serializable, EntityManager {
      * Set name
      *
      * @param string $name
-     * @return Category
+     * @return Subcategory
      */
     public function setName($name)
     {
@@ -131,7 +132,7 @@ class Category implements Serializable, EntityManager {
      * Set createdAt
      *
      * @param \DateTime $createdAt
-     * @return Category
+     * @return Subcategory
      */
     public function setCreatedAt($createdAt)
     {
@@ -154,7 +155,7 @@ class Category implements Serializable, EntityManager {
      * Set updatedAt
      *
      * @param \DateTime $updatedAt
-     * @return Category
+     * @return Subcategory
      */
     public function setUpdatedAt($updatedAt)
     {
@@ -174,35 +175,25 @@ class Category implements Serializable, EntityManager {
     }
 
     /**
-     * Add subcategories
+     * Set category
      *
-     * @param \Api\RemoteBundle\Entity\Subcategory $subcategories
-     * @return Category
+     * @param \Api\RemoteBundle\Entity\Category $category
+     * @return Subcategory
      */
-    public function addSubcategorie(\Api\RemoteBundle\Entity\Subcategory $subcategories)
+    public function setCategory(\Api\RemoteBundle\Entity\Category $category = null)
     {
-        $this->subcategories[] = $subcategories;
+        $this->category = $category;
     
         return $this;
     }
 
     /**
-     * Remove subcategories
+     * Get category
      *
-     * @param \Api\RemoteBundle\Entity\Subcategory $subcategories
+     * @return \Api\RemoteBundle\Entity\Category 
      */
-    public function removeSubcategorie(\Api\RemoteBundle\Entity\Subcategory $subcategories)
+    public function getCategory()
     {
-        $this->subcategories->removeElement($subcategories);
-    }
-
-    /**
-     * Get subcategories
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getSubcategories()
-    {
-        return $this->subcategories;
+        return $this->category;
     }
 }

@@ -3,20 +3,19 @@
  * Created by JetBrains PhpStorm.
  * User: petre
  * Date: 9/8/13
- * Time: 2:09 PM
+ * Time: 2:59 PM
  * To change this template use File | Settings | File Templates.
  */
 
 namespace Api\RemoteBundle\Service;
 
 use Doctrine\ORM\EntityManager;
-use Api\RemoteBundle\Entity\CategoryRepository;
+use Api\RemoteBundle\Entity\SubcategoryRepository;
 
-
-class CategoryService extends DbInteractionService {
+class SubcategoryService extends DbInteractionService {
 
     /**
-     * @var CategoryRepository
+     * @var SubcategoryRepository
      */
     protected $repo;
 
@@ -27,7 +26,7 @@ class CategoryService extends DbInteractionService {
     public function __construct(EntityManager $em) {
         parent::__construct($em);
 
-        $this->repo = $this->em->getRepository('ApiRemoteBundle:Category');
+        $this->repo = $this->em->getRepository('ApiRemoteBundle:Subcategory');
     }
 
     /**
@@ -39,18 +38,7 @@ class CategoryService extends DbInteractionService {
 
         $returnParams = array();
         foreach ($categories as $category) {
-            $subcategories = $category->getSubcategories();
-
-            $subHolder = array();
-
-            foreach ($subcategories as $subcategory) {
-                array_push($subHolder, $subcategory->toArray());
-            }
-
-            $category = $category->toArray();
-            $category['subcategories'] = $subHolder;
-
-            array_push($returnParams, $category);
+            array_push($returnParams, $category->toArray());
         }
 
         return $returnParams;
