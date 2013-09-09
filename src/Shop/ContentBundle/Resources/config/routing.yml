@@ -31,6 +31,18 @@ shop_cart_index:
     pattern: /cart
     defaults: { _controller: ShopContentBundle:Cart:index }
 
+shop_product_item:
+    pattern: /product/{name}/{id}
+    defaults: { _controller: ShopContentBundle:Product:item }
+
+shop_category_listing:
+    pattern: /category/{name}/{id}
+    defaults: { _controller: ShopContentBundle:Product:category }
+
+shop_subcategory_listing:
+    pattern: /subcategory/{name}/{id}
+    defaults: { _controller: ShopContentBundle:Product:subcategory }
+
 # Api Routes
 api_account_login:
     pattern:  api/account/login
@@ -42,4 +54,24 @@ api_account_register:
 
 api_category_retrieve:
     pattern: api/category/retrieveAll
+    methods: [POST]
+
+api_subcategory_find_parent:
+    pattern: api/subcategory/retrieveParentOfSubcategory
+    methods: [POST]
+
+api_subcategory_retrieve_one:
+    pattern: api/subcategory/findOne
+    methods: [POST]
+
+api_category_retrieve_one:
+    pattern: api/category/findOne
+    methods: [POST]
+
+api_product_retrieve_subcategory:
+    pattern: api/product/retrieveForSubcategory
+    methods: [POST]
+
+api_product_retrieve_category:
+    pattern: api/product/retrieveForCategory
     methods: [POST]

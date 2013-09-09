@@ -1,0 +1,49 @@
+{% block listing %}
+    <div class="span9">
+        <ul class="breadcrumb">
+            <li>
+                <a href="{{ path('shop_content_homepage') }}">Home</a> <span class="divider">/</span>
+            </li>
+            <li>
+                <a href="{{ path('shop_category_listing', {'id': parentCategory.id, 'name' : parentCategory.name|lower|replace({' ' : '-'})}) }}">{{ parentCategory.name }}</a> <span class="divider">/</span>
+            </li>
+            <li class="active">
+                <a href="{{ path('shop_subcategory_listing', {'id': subcategory.id, 'name' : subcategory.name|lower|replace({' ' : '-'})}) }}">{{ subcategory.name }}</a>
+            </li>
+        </ul>
+
+
+        {% if products|length > 0 %}
+            {% for product in products %}
+            <div class="row">
+
+                <div class="span1">
+                    <a href="{{ path('shop_category_listing', {'id': product.id, 'name' : product.name|lower|replace({' ' : '-'})}) }}">
+                        <img src="{{ product.pictureUrl }}" alt="{{ product.name }}" />
+                    </a>
+                </div>
+
+                <div class="span6">
+                    <a href="{{ path('shop_category_listing', {'id': product.id, 'name' : product.name|lower|replace({' ' : '-'})}) }}">
+                        <h5>{{ product.name }}</h5>
+
+                    </a>
+
+                    <p>{{ product.description[0:130] }}</p>
+                </div>
+
+                <div class="span1">
+                    <p>${{ product.price }}</p>
+                </div>
+
+                <div class="span2">
+                    <p><a class="btn btn-primary" href="#">Add to cart</a></p>
+                </div>
+            </div>
+            <hr />
+            {% endfor %}
+        {% else %}
+            <p>There are no products currently associated to this subcategory.</p>
+        {% endif %}
+    </div>
+{% endblock %}

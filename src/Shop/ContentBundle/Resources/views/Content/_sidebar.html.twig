@@ -1,0 +1,31 @@
+{% block sidebar %}
+    <div class="span3">
+        <!-- start sidebar -->
+        <ul class="breadcrumb">
+            <li>Categories</li>
+        </ul>
+        <div class="span3 product_list">
+            <ul class="nav">
+                {% for category in categories %}
+
+                    <li>
+                        <a class="active" href="{{ path('shop_category_listing', {'id': category.id, 'name' : category.name|lower|replace({' ' : '-'})}) }}">{{ category.name }}</a>
+
+                        {% if category.subcategories|length > 0 %}
+
+                            <ul>
+                                {% for subcategory in category.subcategories %}
+
+                                    <li><a href="{{ path('shop_subcategory_listing', {'id': subcategory.id, 'name' : subcategory.name|lower|replace({' ' : '-'})}) }}"> - {{ subcategory.name }}</a></li>
+
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </li>
+
+                {% endfor %}
+            </ul>
+        </div>
+        <!-- end sidebar -->
+    </div>
+{% endblock %}

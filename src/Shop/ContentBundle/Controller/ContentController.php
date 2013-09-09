@@ -16,17 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class ContentController extends Controller {
 
     public function homeAction() {
-        $response = $this->get('api.call')->makeCall('api_category_retrieve');
-        $categories = array();
-
-        try {
-            $response = $this->get('json.response')->decode($response);
-
-            $categories = $response['categories'];
-
-        } catch (Exception $e) {
-            $formErrors = $e->getMessage();
-        }
+        $categories = $this->get('api.call')->getCategories();
 
         return $this->render('ShopContentBundle:Content:home.html.twig', array(
             'categories' => $categories

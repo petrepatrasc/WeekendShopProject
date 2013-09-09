@@ -64,7 +64,7 @@ class Category implements Serializable, EntityManager {
     }
 
     public function __construct() {
-        $this->products = new ArrayCollection();
+        $this->subcategories = new ArrayCollection();
     }
 
     /**

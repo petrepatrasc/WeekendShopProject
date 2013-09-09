@@ -19,4 +19,26 @@ class SubcategoryController extends Controller {
 
         return $this->get('json')->generateSuccessfulResponse($params);
     }
+
+    /**
+     * Retrieve the parent of a subcategory.
+     */
+    public function retrieveParentOfSubcategoryAction() {
+        $params = $this->get('json')->decode($this->getRequest());
+        $subId = $params['subcategory'];
+
+        $return['category'] = $this->get('subcategory')->findParent($subId);
+        return $this->get('json')->generateSuccessfulResponse($return);
+    }
+
+    /**
+     * Retrieve a single subcategory entity.
+     */
+    public function retrieveOneAction() {
+        $params = $this->get('json')->decode($this->getRequest());
+        $subId = $params['subcategory'];
+
+        $return['subcategory'] = $this->get('subcategory')->findOne($subId);
+        return $this->get('json')->generateSuccessfulResponse($return);
+    }
 }

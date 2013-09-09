@@ -18,4 +18,15 @@ class CategoryController extends Controller implements AppKeyAuthenticatedContro
 
         return $this->get('json')->generateSuccessfulResponse($params);
     }
+
+    /**
+     * Retrieve a single category entity.
+     */
+    public function retrieveOneAction() {
+        $params = $this->get('json')->decode($this->getRequest());
+        $catId = $params['category'];
+
+        $return['category'] = $this->get('category')->findOne($catId);
+        return $this->get('json')->generateSuccessfulResponse($return);
+    }
 }

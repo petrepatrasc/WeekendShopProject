@@ -55,4 +55,13 @@ class CategoryService extends DbInteractionService {
 
         return $returnParams;
     }
+
+    /**
+     * Retrieve a single category.
+     * @param int $id The ID of the entity that needs to be retrieved.
+     * @return array The category.
+     */
+    public function findOne($id) {
+        return $this->repo->find($id)->toArray();
+    }
 }

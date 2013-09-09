@@ -10,6 +10,7 @@
 namespace Shop\ContentBundle\Service;
 
 use Symfony\Component\Serializer\Encoder\JsonEncoder as JsonEncoder;
+use \Exception;
 
 class ApiCallService {
 
@@ -18,15 +19,132 @@ class ApiCallService {
     protected $appKey = null;
 
     /**
+     * @var JsonResponseService
+     */
+    protected $jsonResponse;
+
+    /**
      * Constructor for ApiCall class.
      * @param mixed $router The router service that should be passed.
      * @param mixed $buzz The Buzz library for issuing POST requests to the API layer.
      * @param string $appKey The Application key from the parameters file.
      */
     public function __construct($router, $buzz, $appKey) {
-        $this->router   = $router;
-        $this->buzz     = $buzz;
-        $this->appKey   = $appKey;
+        $this->router       = $router;
+        $this->buzz         = $buzz;
+        $this->appKey       = $appKey;
+        $this->jsonResponse = new JsonResponseService();
+    }
+
+    public function getCategories() {
+        $categories = array();
+        $response = $this->makeCall('api_category_retrieve');
+
+        try {
+            $response = $this->jsonResponse->decode($response);
+
+            $categories = $response['categories'];
+
+        } catch (Exception $e) {
+            $formErrors = $e->getMessage();
+        }
+
+        return $categories;
+    }
+
+    public function getProductsForSubcategory($id) {
+        $params = array(
+            'subcategory' => $id,
+        );
+
+        $products = array();
+        $response = $this->makeCall('api_product_retrieve_subcategory', $params);
+
+        try {
+            $response = $this->jsonResponse->decode($response);
+
+            $products = $response['products'];
+        } catch (Exception $e) {
+            $formErrors = $e->getMessage();
+        }
+
+        return $products;
+    }
+
+    public function getProductsForCategory($id) {
+        $params = array(
+            'category' => $id,
+        );
+
+        $products = array();
+        $response = $this->makeCall('api_product_retrieve_category', $params);
+
+        try {
+            $response = $this->jsonResponse->decode($response);
+
+            $products = $response['products'];
+        } catch (Exception $e) {
+            $formErrors = $e->getMessage();
+        }
+
+        return $products;
+    }
+
+    public function getParentOfSubcategory($id) {
+        $params = array(
+            'subcategory' => $id
+        );
+
+        $category = array();
+        $response = $this->makeCall('api_subcategory_find_parent', $params);
+
+        try {
+            $response = $this->jsonResponse->decode($response);
+
+            $category = $response['category'];
+        } catch (Exception $e) {
+            $formErrors = $e->getMessage();
+        }
+
+        return $category;
+    }
+
+    public function getSubcategory($id) {
+        $params = array(
+            'subcategory' => $id
+        );
+
+        $subcategory = array();
+        $response = $this->makeCall('api_subcategory_retrieve_one', $params);
+
+        try {
+            $response = $this->jsonResponse->decode($response);
+
+            $subcategory = $response['subcategory'];
+        } catch (Exception $e) {
+            $formErrors = $e->getMessage();
+        }
+
+        return $subcategory;
+    }
+
+    public function getCategory($id) {
+        $params = array(
+            'category' => $id
+        );
+
+        $category = array();
+        $response = $this->makeCall('api_category_retrieve_one', $params);
+
+        try {
+            $response = $this->jsonResponse->decode($response);
+
+            $category = $response['category'];
+        } catch (Exception $e) {
+            $formErrors = $e->getMessage();
+        }
+
+        return $category;
     }
 
     /**

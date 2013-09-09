@@ -9,6 +9,7 @@
 
 namespace Api\RemoteBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use \DateTime;
 
@@ -16,7 +17,11 @@ use \DateTime;
  * @ORM\Entity(repositoryClass="Api\RemoteBundle\Entity\SubcategoryRepository")
  * @ORM\Table(name="subcategory")
  */
-class Subcategory implements Serializable, EntityManager{
+class Subcategory implements Serializable, EntityManager {
+
+    public function __construct() {
+        $this->products = new ArrayCollection();
+    }
 
     /**
      * Create a new entity from array elements or update an existing one.
@@ -93,6 +98,11 @@ class Subcategory implements Serializable, EntityManager{
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
     protected $category;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="subcategory")
+     */
+    protected $products;
 
 
     /**
@@ -195,5 +205,38 @@ class Subcategory implements Serializable, EntityManager{
     public function getCategory()
     {
         return $this->category;
+    }
+
+    /**
+     * Add products
+     *
+     * @param \Api\RemoteBundle\Entity\Product $products
+     * @return Subcategory
+     */
+    public function addProduct(\Api\RemoteBundle\Entity\Product $products)
+    {
+        $this->products[] = $products;
+    
+        return $this;
+    }
+
+    /**
+     * Remove products
+     *
+     * @param \Api\RemoteBundle\Entity\Product $products
+     */
+    public function removeProduct(\Api\RemoteBundle\Entity\Product $products)
+    {
+        $this->products->removeElement($products);
+    }
+
+    /**
+     * Get products
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProducts()
+    {
+        return $this->products;
     }
 }

@@ -12,3 +12,28 @@ api_bundle_category_retrieve:
     pattern: api/category/retrieveAll
     defaults: { _controller: ApiRemoteBundle:Category:retrieveAll }
     methods: [POST]
+
+api_bundle_product_retrieve_subcategory:
+    pattern: api/product/retrieveForSubcategory
+    defaults: { _controller: ApiRemoteBundle:Product:retrieveForSubcategory }
+    methods: [POST]
+
+api_bundle_product_retrieve_category:
+    pattern: api/product/retrieveForCategory
+    defaults: { _controller: ApiRemoteBundle:Product:retrieveForCategory }
+    methods: [POST]
+
+api_bundle_subcategory_find_parent:
+    pattern: api/subcategory/retrieveParentOfSubcategory
+    defaults: { _controller: ApiRemoteBundle:Subcategory:retrieveParentOfSubcategory }
+    methods: [POST]
+
+api_bundle_subcategory_retrieve_one:
+    pattern: api/subcategory/findOne
+    defaults: { _controller: ApiRemoteBundle:Subcategory:retrieveOne }
+    methods: [POST]
+
+api_bundle_category_retrieve_one:
+    pattern: api/category/findOne
+    defaults: { _controller: ApiRemoteBundle:Category:retrieveOne }
+    methods: [POST]

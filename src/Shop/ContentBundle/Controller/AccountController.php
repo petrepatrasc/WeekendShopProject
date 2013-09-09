@@ -18,14 +18,20 @@ use Symfony\Component\HttpFoundation\Session\Session;
 class AccountController extends Controller {
 
     public function indexAction() {
+        $categories = $this->get('api.call')->getCategories();
+
         $session = $this->get('session');
         $loggedIn = $session->get('loggedIn');
 
         if ($loggedIn) {
-            return $this->render('ShopContentBundle:Account:index_user.html.twig');
+            return $this->render('ShopContentBundle:Account:index_user.html.twig', array(
+                'categories' => $categories
+            ));
         }
 
-        return $this->render('ShopContentBundle:Account:index.html.twig');
+        return $this->render('ShopContentBundle:Account:index.html.twig', array(
+            'categories' => $categories
+        ));
     }
 
     public function logoutAction() {
@@ -36,6 +42,8 @@ class AccountController extends Controller {
     }
 
     public function loginAction() {
+        $categories = $this->get('api.call')->getCategories();
+
         $request = $this->getRequest();
         $formErrors = null;
 
@@ -58,7 +66,10 @@ class AccountController extends Controller {
             }
         }
 
-        return $this->render('ShopContentBundle:Account:login_form.html.twig', array('form_errors' => $formErrors));
+        return $this->render('ShopContentBundle:Account:login_form.html.twig', array(
+            'form_errors' => $formErrors,
+            'categories' => $categories
+        ));
     }
 
     /**
@@ -81,6 +92,8 @@ class AccountController extends Controller {
     }
 
     public function registerAction() {
+        $categories = $this->get('api.call')->getCategories();
+
         $request = $this->getRequest();
         $formErrors = null;
 
@@ -97,12 +110,16 @@ class AccountController extends Controller {
             try {
                 $response = $this->get('json.response')->decode($response);
 
+                $params['categories'] = $categories;
                 return $this->render('ShopContentBundle:Account:register_success.html.twig', $params);
             } catch (Exception $e) {
                 var_dump($e);
             }
         }
 
-        return $this->render('ShopContentBundle:Account:register.html.twig', array('form_errors' => $formErrors));
+        return $this->render('ShopContentBundle:Account:register.html.twig', array(
+            'form_errors' => $formErrors,
+            'categories' => $categories
+        ));
     }
 }

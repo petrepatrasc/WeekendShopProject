@@ -1,0 +1,8 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+<div class="row">
+    {% include 'ShopContentBundle:Content:_sidebar.html.twig' %}
+    {% include 'ShopContentBundle:Product:_listing_category.html.twig' %}
+</div>
+{% endblock %}

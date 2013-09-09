@@ -9,6 +9,7 @@
 
 namespace Api\RemoteBundle\Service;
 
+use Api\RemoteBundle\Entity\Subcategory;
 use Doctrine\ORM\EntityManager;
 use Api\RemoteBundle\Entity\SubcategoryRepository;
 
@@ -42,5 +43,26 @@ class SubcategoryService extends DbInteractionService {
         }
 
         return $returnParams;
+    }
+
+    /**
+     * Find the parent of a subcategory.
+     * @param int $id The ID of the subcategory's parent that should be retrieved.
+     * @return array The parent category.
+     */
+    public function findParent($id) {
+        $subcategory = $this->repo->find($id);
+
+        $categoryRepository = $this->em->getRepository('ApiRemoteBundle:Category');
+        return $categoryRepository->find($subcategory->getCategory()->getId())->toArray();
+    }
+
+    /**
+     * Retrieve a single subcategory.
+     * @param int $id The ID of the entity that needs to be retrieved.
+     * @return array The subcategory.
+     */
+    public function findOne($id) {
+        return $this->repo->find($id)->toArray();
     }
 }
