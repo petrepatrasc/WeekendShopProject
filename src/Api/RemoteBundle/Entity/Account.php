@@ -9,6 +9,7 @@
 
 namespace Api\RemoteBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use DateTime;
 
@@ -17,6 +18,10 @@ use DateTime;
  * @ORM\Table(name="account")
  */
 class Account implements Serializable, EntityManager {
+
+    public function __construct() {
+        $this->orders = new ArrayCollection();
+    }
 
     /**
      * Create a new entity from array elements or update an existing one.
@@ -122,6 +127,11 @@ class Account implements Serializable, EntityManager {
      * @ORM\Column(type="string", length=160)
      */
     protected $apiKey;
+
+    /**
+     * @ORM\OneToMany(targetEntity="OrderShop", mappedBy="order_shop")
+     */
+    protected $orders;
 
     /**
      * Get id
@@ -292,5 +302,38 @@ class Account implements Serializable, EntityManager {
     public function getApiKey()
     {
         return $this->apiKey;
+    }
+
+    /**
+     * Add orders
+     *
+     * @param \Api\RemoteBundle\Entity\OrderShop $orders
+     * @return Account
+     */
+    public function addOrder(\Api\RemoteBundle\Entity\OrderShop $orders)
+    {
+        $this->orders[] = $orders;
+    
+        return $this;
+    }
+
+    /**
+     * Remove orders
+     *
+     * @param \Api\RemoteBundle\Entity\OrderShop $orders
+     */
+    public function removeOrder(\Api\RemoteBundle\Entity\OrderShop $orders)
+    {
+        $this->orders->removeElement($orders);
+    }
+
+    /**
+     * Get orders
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getOrders()
+    {
+        return $this->orders;
     }
 }

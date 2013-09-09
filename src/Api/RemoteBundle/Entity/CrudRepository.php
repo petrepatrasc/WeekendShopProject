@@ -22,7 +22,7 @@ class CrudRepository extends EntityRepository {
         $this->_em->persist($entity);
         $this->_em->flush();
 
-        return $entity->getId();
+        return $entity;
     }
 
     /**

@@ -29,7 +29,15 @@ shop_contact_index:
 
 shop_cart_index:
     pattern: /cart
-    defaults: { _controller: ShopContentBundle:Cart:index }
+    defaults: { _controller: ShopContentBundle:Cart:display }
+
+shop_cart_add:
+    pattern: /cart/add/{name}/{id}
+    defaults: { _controller: ShopContentBundle:Cart:add }
+
+shop_cart_checkout:
+    pattern: /cart/checkout
+    defaults: { _controller: ShopContentBundle:Cart:checkout }
 
 shop_product_item:
     pattern: /product/{name}/{id}
@@ -54,6 +62,22 @@ api_account_register:
 
 api_category_retrieve:
     pattern: api/category/retrieveAll
+    methods: [POST]
+
+api_cart_add:
+    pattern: api/cart/add
+    methods: [POST]
+
+api_cart_get_all:
+    pattern: api/cart/getCartItems
+    methods: [POST]
+
+api_order_get:
+    pattern: api/order/retrieveOne
+    methods: [POST]
+
+api_order_finish:
+    pattern: api/order/finish
     methods: [POST]
 
 api_subcategory_find_parent:

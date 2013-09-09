@@ -147,6 +147,55 @@ class ApiCallService {
         return $category;
     }
 
+    public function addToCart($params) {
+        $response = $this->makeCall('api_cart_add', $params);
+
+        try {
+            $response = $this->jsonResponse->decode($response);
+
+        } catch (Exception $e) {
+            $formErrors = $e->getMessage();
+        }
+
+        return true;
+    }
+
+    public function finishOrder($params) {
+        $response = $this->makeCall('api_order_finish', $params);
+
+        try {
+            $response = $this->jsonResponse->decode($response);
+        } catch (Exception $e) {
+            $formErrors = $e->getMessage();
+        }
+
+        return true;
+    }
+
+    public function getCartItems($params) {
+        $response = $this->makeCall('api_cart_get_all', $params);
+        $items = array();
+
+        try {
+            $response = $this->jsonResponse->decode($response);
+            $items = $response['items'];
+        } catch (Exception $e) {
+            $formErrors = $e->getMessage();
+        }
+
+        return $items;
+    }
+
+    public function getTotalCartPrice($items) {
+        $totalPrice = 0;
+
+        foreach ($items as $item) {
+            $totalPrice += $item['product']['price'];
+        }
+
+        return $totalPrice;
+    }
+
     /**
      * Make a call to the API layer, and provides an easy wrapper-method over all of the components.
      * @param string $apiRoute The API route that should be called.

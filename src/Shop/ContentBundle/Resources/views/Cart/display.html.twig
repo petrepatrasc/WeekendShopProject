@@ -1,0 +1,66 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="span12">
+            {% for flashMessage in app.session.flashbag.get('cart') %}
+                <div class="flash flash-success full-width">
+                    {{ flashMessage }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="span12">
+
+
+            <h1> Shopping Cart</h1><br/>
+
+            {% if items|length > 0 %}
+            <table class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Product Name</th>
+                    <th>Code</th>
+                    <th>Unit Price</th>
+                    <th>Total</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for item in items %}
+                    <tr>
+                        <td class="muted center_text""><img class="small-picture" src="{{ item.product.pictureUrl }}"/></td>
+                        <td>{{ item.product.name }}</td>
+                        <td>{{ item.product.code }}</td>
+                        <td>${{ item.product.price }}</td>
+                        <td>${{ item.product.price }}</td>
+                    </tr>
+                    {% endfor %}
+
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td><strong>${{ totalPrice }}</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+            {% else %}
+                <p>There are no products currently in your cart.</p>
+            {% endif %}
+        </div>
+
+    </div>
+
+    {% if items|length > 0 %}
+    <div class="row span12">
+        <a class="btn btn-large" href="{{ path('shop_cart_checkout') }}">Checkout</a>
+    </div>
+    {% endif %}
+
+    <br />
+
+{% endblock %}

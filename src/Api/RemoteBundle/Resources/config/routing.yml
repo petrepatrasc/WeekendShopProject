@@ -13,6 +13,26 @@ api_bundle_category_retrieve:
     defaults: { _controller: ApiRemoteBundle:Category:retrieveAll }
     methods: [POST]
 
+api_bundle_cart_add:
+    pattern: api/cart/add
+    defaults: { _controller: ApiRemoteBundle:CartItem:addToCart }
+    methods: [POST]
+
+api_bundle_cart_get_all:
+    pattern: api/cart/getCartItems
+    defaults: { _controller: ApiRemoteBundle:CartItem:getCartItems }
+    methods: [POST]
+
+api_bundle_order_get:
+    pattern: api/order/retrieveOne
+    defaults: { _controller: ApiRemoteBundle:OrderShop:retrieveOne }
+    methods: [POST]
+
+api_bundle_order_finish:
+    pattern: api/order/finish
+    defaults: { _controller: ApiRemoteBundle:OrderShop:finishOrder }
+    methods: [POST]
+
 api_bundle_product_retrieve_subcategory:
     pattern: api/product/retrieveForSubcategory
     defaults: { _controller: ApiRemoteBundle:Product:retrieveForSubcategory }

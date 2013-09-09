@@ -16,6 +16,14 @@ services:
     class: Api\RemoteBundle\Service\CategoryService
     arguments: [ @doctrine.orm.entity_manager ]
 
+  cart.item:
+    class: Api\RemoteBundle\Service\CartItemService
+    arguments: [ @doctrine.orm.entity_manager, @order ]
+
+  order:
+    class: Api\RemoteBundle\Service\OrderShopService
+    arguments: [ @doctrine.orm.entity_manager ]
+
   product:
     class: Api\RemoteBundle\Service\ProductService
     arguments: [ @doctrine.orm.entity_manager ]

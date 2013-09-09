@@ -80,6 +80,7 @@ class AccountController extends Controller {
         $session = $this->get('session');
         $session->start();
 
+        $session->set('accountId', $response['id']);
         $session->set('username', $response['username']);
         $session->set('api_key', $response['apiKey']);
         $session->set('fullName', $response['fullName']);

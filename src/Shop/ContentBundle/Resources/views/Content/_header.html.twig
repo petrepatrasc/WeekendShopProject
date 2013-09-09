@@ -8,15 +8,7 @@
         <div class="span8">
 
             <div class="row">
-                <div class="span3">&nbsp;</div>
-                <div class="span2">
-                    {% if app.session.get('loggedIn') == true %}
-                        <a href="{{ path('shop_cart_index') }}"><h4>Shopping Cart</h4></a>
-                        <a href="{{ path('shop_cart_index') }}">Your cart is empty.</a>
-                    {% else %}
-                        &nbsp;
-                    {% endif %}
-                </div>
+                <div class="span5">&nbsp;</div>
                 <div class="span3 customer_service">
                     <h4>FREE delivery on ALL orders</h4>
                     <h4>
